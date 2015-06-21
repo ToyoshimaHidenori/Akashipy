@@ -7,11 +7,12 @@ r = requests.get(url + keyword)
 
 print(r.status_code, r.headers['content-type'])
 
-f = open('hoge.txt', 'w')
+f = open('StudyMeetingCalender.txt', 'w')
 
 for event in r.json()['events'][:10]:
-    print(event['event_id'], event['title'],'\n開始時間 : ', event['started_at'] + '\n')
-    f.write("%d %s\n" % (event['event_id'], event['title']))
+    text = str(event['event_id']) + event['title'] + '\n開始時間 : ' + event['started_at'] + '\n\n'
+    print(text, end='')
+    f.write(text)
 
 f.close()
 
