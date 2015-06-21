@@ -1,7 +1,8 @@
 import requests
 
 url = 'http://connpass.com/api/v1/event/?keyword='
-r = requests.get(url + 'ruby')
+keyword = input()
+r = requests.get(url + keyword)
 
 print(r.status_code, r.headers['content-type'])
 
